@@ -8,7 +8,7 @@ const Problem2 = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   function handleNavigate(path) {
-    // setShowModal(path);
+    setShowModal(path);
     navigate("/problem-2/" + path);
   }
   return (
@@ -22,7 +22,6 @@ const Problem2 = () => {
               className="btn btn-lg btn-outline-primary"
               type="button"
               onClick={() => {
-                setShowModal("all");
                 handleNavigate("all");
               }}
             >
@@ -32,7 +31,6 @@ const Problem2 = () => {
               className="btn btn-lg btn-outline-warning"
               type="button"
               onClick={() => {
-                setShowModal("us");
                 handleNavigate("us");
               }}
             >
@@ -41,8 +39,16 @@ const Problem2 = () => {
           </div>
         </div>
       </div>
-      <CustomModal isShow={showModal === "all"} onShowModal={setShowModal} />
-      <CustomModal isShow={showModal === "us"} onShowModal={setShowModal} />
+      <CustomModal
+        isShow={showModal === "all"}
+        onShowModal={setShowModal}
+        onNavigate={handleNavigate}
+      />
+      <CustomModal
+        isShow={showModal === "us"}
+        onShowModal={setShowModal}
+        onNavigate={handleNavigate}
+      />
     </>
   );
 };

@@ -7,7 +7,7 @@ import ContactDetails from "./ContactDetails";
 
 const BASE_URL = "https://contact.mediusware.com/api/";
 
-function CustomModal({ isShow, onShowModal }) {
+function CustomModal({ isShow, onShowModal, onNavigate }) {
   const [data, setData] = useState([]);
   const [openModalC, setOpenModalC] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -73,9 +73,26 @@ function CustomModal({ isShow, onShowModal }) {
       <Modal show={isShow}>
         <Modal.Header>
           <Modal.Title>
-            <Button variant="primary">All Contacts</Button>
-            <Button variant="primary">US Contacts</Button>
-            <Button variant="primary" onClick={closeNavigate}>
+            <Button
+              style={{ backgroundColor: "#46139f" }}
+              onClick={() => onNavigate("all")}
+            >
+              All Contacts
+            </Button>
+            <Button
+              style={{ backgroundColor: "#ff7f50" }}
+              onClick={() => onNavigate("us")}
+            >
+              US Contacts
+            </Button>
+            <Button
+              style={{
+                backgroundColor: "#fff",
+                border: "1px solid #46139f",
+                color: "#444",
+              }}
+              onClick={closeNavigate}
+            >
               Close
             </Button>
           </Modal.Title>
